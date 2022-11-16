@@ -1,64 +1,87 @@
-import React, { Component } from 'react';
-import {View, Text, StyleSheet, Button, TextInput } from 'react-native';
-export default class extends Component {
-//Component class extend
-//Methods for React - Native
-// render() -> Draw the view on Mobile Screen
-//Custom Methods (User driven)
-constructor(props) {
-super(props); //Inheriting parent class methods and objects
-this.state = {
-  username:'',
-  password:''
-  };
-//this.handleButton = this.handleButton.bind(this);
-//this.props = {message: ''}
-}
-onLogin(){
-   const {username, password} = this.state;
- if(username=='admin' && password == 'pass'){
-   alert('Logged in')
- }
- else{
-   alert('logged out')
- }
+import React from 'react';
+import { StyleSheet, Text, View, TextInput, TouchableOpacity } from 'react-native';
+
+export default class App extends React.Component {
+  state={
+    email:"",
+    password:""
+  }
+  render(){
+    return (
+      <View style={styles.container}>
+        <Text style={styles.logo}>Zing</Text>
+        <View style={styles.inputView} >
+          <TextInput
+            style={styles.inputText}
+            placeholder="Google"
+            placeholderTextColor="#003f5c"
+            onChangeText={text => this.setState({email:text})}/>
+        </View>
+        <View style={styles.inputView} >
+          <TextInput
+            secureTextEntry
+            style={styles.inputText}
+            placeholder="Password..."
+            placeholderTextColor="#003f5c"
+            onChangeText={text => this.setState({password:text})}/>
+        </View>
+         <TouchableOpacity style={styles.loginBtn}>
+                  <Text style={styles.loginText}>Google</Text>
+                </TouchableOpacity>
+        <TouchableOpacity style={styles.loginBtn}>
+          <Text style={styles.loginText}>facebook</Text>
+        </TouchableOpacity>
+       <TouchableOpacity style={styles.loginBtn}>
+                 <Text style={styles.loginText}>Sign up with apple</Text>
+               </TouchableOpacity>
+
+
+      </View>
+    );
+  }
 }
 
-render() {
-//Draw view on Mobile Screen
-return(
-<View style={Styles.container}>
- <Text style={Styles.text}>Hello Developers</Text>
-
- <TextInput
- value={this.state.username}
-   style={{height: 40}}
-   placeholder="Enter Your Username"
-   onChangeText={(username) => this.setState({username})}
- />
- <TextInput
-   value={this.state.password}
-   style={{height:40}}
-   placeholder="Enter Your Password"
-   onChangeText={(password) => this.setState({password})}
- />
- <Button
- title="Click Here"
- onPress={this.onLogin.bind(this)}
- />
-</View>
-);
-}
-}
-
-const Styles = StyleSheet.create({
-text: {
-fontSize: 50,
-color: 'red'
-},
-container: {
-backgroundColor: 'white',
-height: '100%'
-}
-})
-
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#003f5c',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  logo:{
+    fontWeight:"bold",
+    fontSize:50,
+    color:"#fb5b5a",
+    marginBottom:40
+  },
+  inputView:{
+    width:"80%",
+    backgroundColor:"#465881",
+    borderRadius:25,
+    height:50,
+    marginBottom:20,
+    justifyContent:"center",
+    padding:20
+  },
+  inputText:{
+    height:50,
+    color:"white"
+  },
+  forgot:{
+    color:"white",
+    fontSize:11
+  },
+  loginBtn:{
+    width:"80%",
+    backgroundColor:"#fb5b5a",
+    borderRadius:25,
+    height:50,
+    alignItems:"center",
+    justifyContent:"center",
+    marginTop:40,
+    marginBottom:10
+  },
+  loginText:{
+    color:"white"
+  }
+});
