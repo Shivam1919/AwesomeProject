@@ -1,5 +1,7 @@
 import React from 'react';
-import { StyleSheet, Text, View, TextInput, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View, TextInput, TouchableOpacity, Image} from 'react-native'
+
+
 
 export default class App extends React.Component {
   state={
@@ -9,6 +11,10 @@ export default class App extends React.Component {
   render(){
      return (
        <View style={styles.container}>
+           <Image
+               style={styles.image}
+               source={{uri: 'https://pbs.twimg.com/profile_images/1572130227131654144/Fh3VCSVF_400x400.jpg'}}
+           />
          <Text style={styles.logo}>Zing</Text>
 
 
@@ -29,7 +35,7 @@ export default class App extends React.Component {
                         </TouchableOpacity>
          <TouchableOpacity>
                             <Text style={styles.or}>by continuing, you agree to our Terms of service and Privacy Policy</Text>
-                          </TouchableOpacity>
+         </TouchableOpacity>
        </View>
      );
    }
@@ -38,16 +44,25 @@ export default class App extends React.Component {
   const styles = StyleSheet.create({
    container: {
      flex: 1,
+       borderWidth: 2,
      backgroundColor: '#FFFFFF',
      alignItems: 'center',
      justifyContent: 'center',
    },
+      image:{
+
+          borderWidth: 2,
+          backgroundColor: '#000000',
+          height: 200,
+          width:200
+      },
+
    logo:{
      fontWeight:"bold",
      fontSize:50,
      color:"#fb5b5a",
-     marginTop:20,
-     marginBottom:40
+     marginTop:40,
+     marginBottom:10
    },
    inputView:{
      width:"80%",
@@ -74,7 +89,7 @@ export default class App extends React.Component {
      height:50,
      alignItems:"center",
      justifyContent:"center",
-     marginTop:20,
+     marginTop:5,
      marginBottom:1
    },
    loginBtn2:{
